@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 33%;
+          border: 1px solid grey;
+          height: 100px;
+          background-color: antiquewhite;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        .flex-row {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            height: 100px;
+            justify-content: center;
+        }
+
+        .flex-column {
+            flex: 0.33;
+            margin: 0px 1px;
+            background-color: bisque;
+            border: 1px solid black;
+        }
+
+        .grid-container {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 33% 33% 33%;
+            background-color: wheat;
+            text-align: justify;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .grid-item {
+            border: 1px solid goldenrod;
+            background-color: blanchedalmond;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+        @media screen and (max-width: 600px) {
+          .column {
+            width: 100%;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-column"></div>
+        <div class="flex-column"></div>
+        <div class="flex-column"></div>
+    </div>
+    <div class="grid-container" id='grid-container'></div>
+    <script type="text/javascript">
+        let el = document.getElementById('grid-container');
+        let i = 1;
+        if (el) {
+            do {
+                let tag = document.createElement("div");
+                tag.className = 'grid-item';
+                tag.innerText = i;
+                el.append(tag)
+                i = i +1;
+            }while (i <= 9);
+        }
+    </script>
+</body>
+</html>
